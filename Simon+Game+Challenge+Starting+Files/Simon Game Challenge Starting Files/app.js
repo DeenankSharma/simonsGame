@@ -4,7 +4,7 @@ const blue = new Audio("./sounds/blue.mp3")
 const green = new Audio("./sounds/green.mp3")
 const yellow = new Audio("./sounds/yellow.mp3")
 const wrong = new Audio("./sounds/wrong.mp3")
-
+var i =0;
 var array_length;
 function page_reload() {
     location.reload();
@@ -176,66 +176,23 @@ $(".yellow").click(function (event) {
     check_pattern(n2);
 })
 
-
-
 function check_pattern(n2) {
-    // while (array_length > 0) {
-    if (arr[-(array_length)] === n2) {
-        if (array_length === 1) {
-            make_pattern();
+        if (arr[i] !== n2) {
+            $("h1").text("Game Ended!");
+            wrong.play();
+            setTimeout(page_reload, 2000);
+            return;
         }
-        array_length = (array_length - 1);
-    }
-    else {
-        $("h1").text("Game Ended!");
-        wrong.play();
-        setTimeout(page_reload, 2000)
-    }
-    if (arr[-(array_length)] === n2) {
-        if (array_length === 1) {
-            make_pattern();
+        else{
+            console.log(array_length);
+            array_length--;
+            i++;
+            if (array_length === 0) {
+                i=0;
+                setTimeout(make_pattern,1000);
+                // make_pattern();
+            }
         }
-        array_length = array_length - 1;
-    }
-    else {
-        $("h1").text("Game Ended!");
-        wrong.play();
-        setTimeout(page_reload, 2000)
-    }
-
-
-    if (arr[-(array_length)] === n2) {
-        if (array_length === 1) {
-            make_pattern();
-        }
-        array_length--;
-    }
-    else {
-        $("h1").text("Game Ended!");
-        wrong.play();
-        setTimeout(page_reload, 2000)
-    }
-
-
-    if (arr[-(array_length)] === n2) {
-        if (array_length === 1) {
-            make_pattern();
-        }
-        array_length = array_length - 1;
-    }
-    else {
-        $("h1").text("Game Ended!");
-        wrong.play();
-        setTimeout(page_reload, 2000)
-    }
 }
-// }
-
-
-
-
-
-
-
 
 
